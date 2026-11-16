@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Les racines de Marine</title>
+<meta name="description" content="Quatre siècles, trois pays, deux continents : l'histoire des ancêtres de Marine Manceau et de Hayden.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..500&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ====================== NAVIGATION ====================== -->
+<nav class="nav" id="nav">
+  <a href="#accueil" class="nav-logo">M <span>&amp;</span> H</a>
+  <ul>
+    <li><a href="#carte">La carte</a></li>
+    <li><a href="#arbre">L'arbre</a></li>
+    <li><a href="#espagne">Oranie</a></li>
+    <li><a href="#poitou">Poitou</a></li>
+    <li><a href="#tarn">Montagne Noire</a></li>
+    <li><a href="#amerique">Hayden</a></li>
+    <li><a href="#noms">Les noms</a></li>
+    <li><a href="#frise">La frise</a></li>
+    <li><a href="#enquete">L'enquête</a></li>
+  </ul>
+</nav>
+
+<!-- ====================== ACCUEIL ====================== -->
+<header class="hero" id="accueil">
+  <div class="hero-bg" style="background-image:url(images/oran-port.jpg)"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <p class="hero-kicker">Une histoire de famille · 1606 – 2026</p>
+    <h1>Les racines<br><em>de Marine</em></h1>
+    <p class="hero-sub">Des montagnes d'Alicante au port d'Oran, des plaines du Poitou aux prés de la Montagne Noire… et jusqu'à l'Arkansas de Hayden.</p>
+    <a href="#lettre" class="hero-cta">Ouvrir le livre <span>↓</span></a>
+  </div>
+  <p class="hero-credit">Oran, vue générale du port prise de Santa Cruz — carte postale, début du XXe siècle</p>
+</header>
+
+<!-- ====================== LETTRE ====================== -->
+<section class="lettre" id="lettre">
+  <div class="papier reveal">
+    <p class="kicker">Avant-propos</p>
+    <p>Ces pages rassemblent ce que l'on sait aujourd'hui des ancêtres de Marine et de Hayden, à partir d'actes de baptême écrits à la plume sous Louis XIV, de registres militaires, de cartes d'identité et de recensements américains.</p>
+    <p>On y croise une arrière-grand-mère née le jour où, selon la légende, il neigea sur Rome ; un grand-père venu d'un village où l'on ne compta que trois naissances en 1929 ; une famille installée au pied de la même montagne depuis plus de trois siècles ; et, de l'autre côté de l'Atlantique, la famille de Hayden, qui a traversé l'Amérique d'est en ouest.</p>
+    <p>Bonne lecture.</p>
+  </div>
+
+  <div class="chiffres">
+    <div class="chiffre reveal"><span class="n" data-count="420">0</span><span class="l">ans d'histoire</span></div>
+    <div class="chiffre reveal"><span class="n" data-count="5">0</span><span class="l">pays traversés</span></div>
+    <div class="chiffre reveal"><span class="n" data-count="98">0</span><span class="l">noms retrouvés dans les archives</span></div>
+    <div class="chiffre reveal"><span class="n" data-count="2">0</span><span class="l">mers et océans franchis</span></div>
+  </div>
+</section>
+
+<!-- ====================== CARTE ====================== -->
+<section class="section carte-section" id="carte">
+  <div class="section-head reveal">
+    <p class="kicker">Chapitre premier</p>
+    <h2>Les chemins qui mènent à toi</h2>
+    <p class="chapo">Cinq routes, parties d'Espagne, du Poitou, du Tarn et d'Angleterre, qui convergent vers deux personnes. Clique sur une branche pour suivre son voyage, puis sur un point pour en savoir plus.</p>
+  </div>
+  <div class="carte-filtres" id="carte-filtres"></div>
+  <div class="carte-wrap reveal">
+    <div id="map"></div>
+  </div>
+</section>
+
+<!-- ====================== ARBRE ====================== -->
+<section class="section arbre-section" id="arbre">
+  <div class="section-head reveal">
+    <p class="kicker">Chapitre deux</p>
+    <h2>Ton arbre… et celui de Hayden</h2>
+    <p class="chapo">À gauche, tes ancêtres ; à droite, ceux de Hayden. Touche une personne pour lire son histoire. Les cases en pointillés sont les ancêtres qui restent à découvrir — l'enquête continue !</p>
+  </div>
+  <div class="legende-certitude">
+    <span><i class="pastille atteste"></i>Retrouvé dans l'état civil</span>
+    <span><i class="pastille probable"></i>Très probable</span>
+    <span><i class="pastille hypothese"></i>Piste à vérifier</span>
+    <span><i class="pastille inconnu"></i>À découvrir</span>
+  </div>
+  <div class="arbre-scroll" id="arbre-scroll">
+    <div class="arbre" id="arbre-canvas"></div>
+  </div>
+  <p class="astuce">↔ Fais glisser l'arbre pour le parcourir.</p>
+</section>
+
+<!-- ====================== CHAPITRE ESPAGNE / ORANIE ====================== -->
+<section class="chapitre" id="espagne" data-branche="espagne">
+  <div class="chapitre-hero" style="background-image:url(images/alicante-rada.jpg)">
+    <div class="chapitre-titre">
+      <p class="kicker">Chapitre trois</p>
+      <h2>Les Espagnols d'Oranie</h2>
+      <p>Barselo &amp; Valverde · 1850 – 1962</p>
+    </div>
+    <p class="credit">Rafael Monleón, <i>La rade d'Alicante</i>, XIXe siècle (Musée du Prado)</p>
+  </div>
+
+  <div class="recit">
+    <div class="bloc reveal">
+      <div class="bloc-texte">
+        <h3>Partir</h3>
+        <p>Au milieu du XIXe siècle, la province d'Alicante a faim. Sécheresses, petites terres, journaliers payés une misère. En face, à une dizaine d'heures de mer, il y a <b>Oran</b> — une ville qui a été espagnole pendant près de trois siècles, où l'on parle encore castillan et valencien, et où les colons français cherchent désespérément des bras pour défricher, bâtir les routes, planter la vigne.</p>
+        <p>Personne n'est venu « recruter » tes ancêtres : ils sont partis d'eux-mêmes, sur des voiliers qu'on appelait des <i>balancelles</i>. On disait alors que sans le bras de l'ouvrier espagnol, la terre d'Oranie n'aurait jamais été défrichée.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/gallinera.jpg" alt="La Vall de Gallinera, province d'Alicante" loading="lazy"><figcaption>La Vall de Gallinera (Alicante), berceau ancien des Barceló — on y trouve leur trace dès le XVIIe siècle.</figcaption></figure>
+    </div>
+
+    <div class="bloc inverse reveal">
+      <div class="bloc-texte">
+        <h3>Deux Espagnes</h3>
+        <p>Deux familles, deux routes. Les <b>Barselo</b> viennent du Levant catalanophone : Miguel Barceló Orts et Maria Dolores Lon Cabot, en Espagne ; leur fils Francisco s'installe à Oran, où il épouse Antonia Lopez en 1857. La famille est à Oran dès les années 1860.</p>
+        <p>Les <b>Valverde</b>, eux, sont des paysans d'Andalousie orientale — Albuñol, dans les montagnes de Grenade, et Pulpí, près d'Almería. Ils s'installent à <b>Oued Imbert</b>, un village agricole près de Sidi Bel Abbès, avec d'autres familles venues des mêmes villages : Caparrós, Figueroa, Vargas, Gallardo…</p>
+        <p class="aparte">En 1928, le mariage de Trinitaria Barselo et de Dominique Valverde, c'est la rencontre de l'Espagne valencienne et de l'Espagne andalouse.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/albunol-1751.jpg" alt="Dessin d'Albuñol en 1751" loading="lazy"><figcaption>Albuñol dessiné en 1751 pour le cadastre du marquis de la Ensenada. Les Valverde d'Oued Imbert venaient de ces montagnes.</figcaption></figure>
+    </div>
+
+    <div class="panorama reveal">
+      <img src="images/oran-place-armes.jpg" alt="Oran, place d'Armes et station des tramways" loading="lazy">
+      <p>Oran, la place d'Armes et ses tramways — l'Oran où grandit Trinitaria.</p>
+    </div>
+
+    <div class="bloc reveal">
+      <div class="bloc-texte">
+        <h3>Trinitaria, née le jour de la neige</h3>
+        <p class="date-cle">5 août 1894 · Oran</p>
+        <p>Ce jour-là, l'Église fête <b>Notre-Dame-des-Neiges</b> : la légende raconte qu'au IVe siècle, il neigea en plein mois d'août sur une colline de Rome, pour indiquer où bâtir une basilique. Fidèles à la coutume espagnole du saint du jour, ses parents l'appellent <b>Trinitaria Nieves</b>.</p>
+        <p>Elle a de la chance, sans le savoir : cinq ans plus tôt, la <b>loi du 26 juin 1889</b> a rendu Françaises les enfants comme elle. Elle va à l'école de la République — sa signature, quatre-vingts ans plus tard, est toujours élégante et sûre d'elle, à une époque où beaucoup d'immigrés signaient d'une croix.</p>
+      </div>
+      <figure class="bloc-image portrait"><img src="images/masolino-neige.jpg" alt="Masolino, le Miracle de la neige" loading="lazy"><figcaption>Masolino, <i>Le Miracle de la neige</i> (v. 1428) : le pape trace dans la neige le plan de Sainte-Marie-Majeure.</figcaption></figure>
+    </div>
+
+    <div class="bloc inverse reveal">
+      <div class="bloc-texte">
+        <h3>Le comptable du Crédit Foncier</h3>
+        <p class="date-cle">9 juin 1928 · Oran</p>
+        <p>Trinitaria a presque 34 ans quand elle épouse <b>Dominique Isidore Valverde</b>, de quatre ans son cadet. Mariage tardif ? La Grande Guerre a fauché les hommes de sa génération ; beaucoup de femmes nées vers 1894 se sont mariées avec des garçons un peu plus jeunes.</p>
+        <p>Dominique Isidore — <i>Domingo Isidro</i> en espagnol — a quitté la terre de ses parents. Il est <b>caissier-comptable au Crédit Foncier</b>, la grande banque de la colonie. Le petit-fils de paysans andalous est devenu un employé de bureau respecté : c'est toute l'ascension d'une génération.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/oran-seguin.jpg" alt="Oran, boulevard Séguin et Hôtel Continental" loading="lazy"><figcaption>Le boulevard Séguin et l'Hôtel Continental, au cœur de l'Oran des années 1920.</figcaption></figure>
+    </div>
+
+    <div class="bloc reveal">
+      <div class="bloc-texte">
+        <h3>Marie-Rose, née le jour de sainte Agathe</h3>
+        <p class="date-cle">5 février 1931 · Oran</p>
+        <p>Deux ans et demi après le mariage naît leur fille. Elle a un prénom bien français, Marie-Rose… et un second prénom qui trahit la tradition familiale : <b>Agathe</b>, parce qu'elle est née un 5 février, jour de <i>Santa Águeda</i>. La coutume du saint du jour a traversé une génération de plus.</p>
+        <p>Au début des années 1950, la jeune femme rencontre un militaire venu de loin, du Poitou : <b>Marc Manceau</b>.</p>
+      </div>
+      <figure class="bloc-image portrait"><img src="images/zurbaran-agathe.jpg" alt="Zurbarán, Sainte Agathe" loading="lazy"><figcaption>Francisco de Zurbarán, <i>Sainte Agathe</i> (v. 1630, musée Fabre, Montpellier).</figcaption></figure>
+    </div>
+
+    <div class="citation reveal">
+      <img src="images/oran-santacruz.jpg" alt="Chapelle et fort de Santa Cruz au-dessus d'Oran" loading="lazy">
+      <blockquote>
+        <p>1962. L'Algérie devient indépendante. Comme presque tous les Européens d'Oranie, la famille doit partir vers une « métropole » où elle n'a jamais vécu. Trinitaria a 68 ans.</p>
+        <footer>Au-dessus d'Oran, la chapelle de Santa Cruz veillait sur le port. Après 1962, les Oranais ont emporté son pèlerinage avec eux, en France.</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CHAPITRE POITOU ====================== -->
+<section class="chapitre" id="poitou" data-branche="poitou">
+  <div class="chapitre-hero" style="background-image:url(images/smdb-plaine.jpg)">
+    <div class="chapitre-titre">
+      <p class="kicker">Chapitre quatre</p>
+      <h2>Le soldat du Poitou</h2>
+      <p>Manceau &amp; Mangou · 1606 – 2001</p>
+    </div>
+    <p class="credit">Saint-Martin-de-Bernegoue (Deux-Sèvres) et son église dans la plaine</p>
+  </div>
+
+  <div class="recit">
+    <div class="bloc reveal">
+      <div class="bloc-texte">
+        <h3>Trois naissances en 1929</h3>
+        <p class="date-cle">21 juillet 1929 · Saint-Martin-de-Bernegoue</p>
+        <p>Il faut imaginer un village de quelques centaines d'âmes dans la plaine de Niort, au bord de la Guirande : des champs de blé et de luzerne, des vaches laitières, une église romane. Cette année-là, on n'y enregistre que <b>trois naissances</b>. L'une d'elles est celle de <b>Marc Rémi Manceau</b>, ton grand-père.</p>
+        <p>Il grandit pendant la crise des années 1930, puis sous l'Occupation. Pour un jeune homme de la campagne, l'armée, à la fin des années 1940, c'est une sécurité, une fierté… et la promesse de voir le monde.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/smdb-eglise.jpg" alt="Église de Saint-Martin-de-Bernegoue" loading="lazy"><figcaption>L'église Sainte-Marie-Madeleine de Saint-Martin-de-Bernegoue.</figcaption></figure>
+    </div>
+
+    <div class="bloc inverse reveal">
+      <div class="bloc-texte">
+        <h3>Quatre siècles dans la même plaine</h3>
+        <p>Les Manceau ne sont pas arrivés là hier. En <b>1606, sous Henri IV</b>, un Manceau vend une terre à un certain Nouel Piet : l'acte est conservé aux Archives des Deux-Sèvres. C'est la plus ancienne trace écrite de la famille dans la région.</p>
+        <p>Au fil des siècles, les registres égrènent les noms : Estienne Manceau et Jeanne Raimbert vers 1610, Jean Manceau et Louise Alory en 1753, Pierre Manceau sous Napoléon… Des cultivateurs, presque tous, alliés aux familles du coin : <b>Mangou, Chauveau, Bernegoue</b>.</p>
+        <p class="aparte">Ton nom lui-même raconte un voyage plus ancien encore : au Moyen Âge, un « Manceau », c'était quelqu'un venu du Maine, la région du Mans.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/niort.jpg" alt="Niort, la préfecture, carte postale ancienne" loading="lazy"><figcaption>Niort, la préfecture — carte postale de la maison Aubert, avant 1916. C'est ici que sont conservés les registres de la famille.</figcaption></figure>
+    </div>
+
+    <div class="bloc reveal">
+      <div class="bloc-texte">
+        <h3>D'Oran à Toulouse</h3>
+        <p>Affecté en Oranie au début des années 1950, au moment où l'armée y concentre beaucoup d'hommes, le jeune militaire poitevin rencontre <b>Marie-Rose Valverde</b>. Leur histoire est celle de bien des couples de l'époque : un soldat de « métropole » et une fille de la classe moyenne oranaise.</p>
+        <p>Au fil des garnisons naissent trois garçons : <b>Christian</b> — ton père —, <b>Thierry</b> et <b>Patrick</b>. En 1962, la famille s'installe à Toulouse, grande ville militaire du Sud-Ouest. La grand-mère Trinitaria, veuve, vient vivre tout près.</p>
+        <p>Marc Rémi s'éteint à Toulouse le 20 avril 2001 ; Marie-Rose le suit le 26 novembre 2004.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/toulouse-1786.jpg" alt="Le Pont-Neuf de Toulouse, peinture du XVIIIe siècle" loading="lazy"><figcaption>Pierre-Joseph Wallaert, <i>Le Pont-Neuf à Toulouse</i> (XVIIIe s., musée du Vieux Toulouse).</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CHAPITRE TARN ====================== -->
+<section class="chapitre" id="tarn" data-branche="tarn">
+  <div class="chapitre-hero" style="background-image:url(images/labruguiere-1889.jpg)">
+    <div class="chapitre-titre">
+      <p class="kicker">Chapitre cinq</p>
+      <h2>Les gens de la Montagne Noire</h2>
+      <p>Bolon &amp; Delprat · 1673 – 2019</p>
+    </div>
+    <p class="credit">Labruguière photographiée depuis un cerf-volant par Arthur Batut, 1889 — l'une des toutes premières photos aériennes</p>
+  </div>
+
+  <div class="recit">
+    <div class="encart reveal">
+      <span class="encart-titre">Le saviez-tu ?</span>
+      <p>La photo ci-dessus est un petit trésor. En 1889, à <b>Labruguière</b>, le photographe Arthur Batut accroche un appareil photo à un cerf-volant et déclenche à distance : il invente la photographie aérienne par cerf-volant. Ton grand-père Xavier est né quarante ans plus tard dans ce même village — et un musée y porte aujourd'hui le nom de Batut.</p>
+    </div>
+
+    <div class="bloc reveal">
+      <div class="bloc-texte">
+        <h3>Guillemette, 1673</h3>
+        <p class="date-cle">4 février 1673 · Dourgne</p>
+        <p>C'est le plus vieux nom de la branche. Ce jour-là, sous Louis XIV, le curé de Dourgne inscrit au registre le baptême de <b>Guillemette Delprat</b> — il écrit « Guillemete ». Vingt-cinq ans plus tard, elle épouse un Siguié, dont l'acte dit qu'il est « <i>laboureur au pignié</i> » : sans doute un paysan qui, l'hiver, peignait la laine pour les drapiers de Dourgne et de Castres.</p>
+        <p>Elle a survécu à la terrible famine de 1693–1694. Après elle, les Delprat ne quitteront plus Dourgne pendant trois siècles.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/montagne-noire.jpg" alt="La Montagne Noire" loading="lazy"><figcaption>La Montagne Noire, horizon de la famille depuis toujours.</figcaption></figure>
+    </div>
+
+    <div class="bloc inverse reveal">
+      <div class="bloc-texte">
+        <h3>Les gens du pré</h3>
+        <p><b>Delprat</b>, en occitan, c'est <i>del prat</i> : « du pré ». Et Dourgne est l'un des tout premiers foyers de ce nom en France — plus d'un millier de Delprat y sont recensés au fil des siècles.</p>
+        <p>À la Révolution, les Delprat deviennent « propriétaires cultivateurs » : ils possèdent leurs terres et leurs bœufs de labour. On les voit se marier avec les familles voisines — Gabaude, Lencou, Moulet, Vidal, Solomiac — toujours dans un mouchoir de poche entre Dourgne, Labruguière et Castres.</p>
+        <p>Le 6 avril 1939, à Dourgne, naît <b>Élise Rosalie Delprat</b>, ta grand-mère.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/dourgne.jpg" alt="Dourgne, la fontaine et les arcades" loading="lazy"><figcaption>Dourgne, sa fontaine et ses arcades.</figcaption></figure>
+    </div>
+
+    <div class="bloc reveal">
+      <div class="bloc-texte">
+        <h3>Joseph, 1918</h3>
+        <p class="date-cle">1er décembre 1895 – 18 janvier 1975 · Labruguière</p>
+        <p>Côté Bolon, la famille est très pieuse : une religieuse, Sœur Bolon, travaille chez les Sœurs Bleues de Castres à la fin du XIXe siècle, et tous les garçons portent « Marie » parmi leurs prénoms.</p>
+        <p><b>Joseph Paul Henri Marie Bolon</b> a dix-huit ans en 1914. Mobilisé, il se retrouve en 1918 en <b>Champagne, près de Cramant</b>, l'année de la seconde bataille de la Marne. Il en revient. Il se marie à Labruguière et transmet ses trois prénoms, dans l'ordre, à son fils <b>Xavier Paul Henri Marie</b>, né le 14 août 1929.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/cramant.jpg" alt="Cramant et son vignoble" loading="lazy"><figcaption>Cramant, en Champagne. En 1918, la guerre passait dans ces vignes.</figcaption></figure>
+    </div>
+
+    <div class="bloc inverse reveal">
+      <div class="bloc-texte">
+        <h3>Xavier &amp; Élise</h3>
+        <p>Xavier Bolon et Élise Delprat font leur vie à <b>Labruguière</b>, à douze kilomètres de Dourgne : toute leur histoire tient dans un rayon de quinze kilomètres au pied de la Montagne Noire. C'est l'exact inverse des Espagnols d'Oran, qui ont tout quitté — et pourtant les deux histoires vont se rejoindre.</p>
+        <p>Élise s'éteint en 2013 ; Xavier six ans plus tard, à 90 ans. Leur fille, ta mère, épouse un garçon de Toulouse : <b>Christian Manceau</b>.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/castres.jpg" alt="Les maisons sur l'Agout à Castres" loading="lazy"><figcaption>Les maisons sur l'Agout, à Castres.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONVERGENCE ====================== -->
+<section class="convergence" id="convergence">
+  <div class="convergence-bg" style="background-image:url(images/toulouse-capitole.jpg)"></div>
+  <div class="convergence-inner reveal">
+    <p class="kicker">Toulouse</p>
+    <h2>Là où tout se rejoint</h2>
+    <div class="fusion">
+      <div><b>Espagne</b><span>Barselo · Valverde</span></div>
+      <div class="plus">+</div>
+      <div><b>Poitou</b><span>Manceau · Mangou</span></div>
+      <div class="plus">+</div>
+      <div><b>Montagne Noire</b><span>Bolon · Delprat</span></div>
+      <div class="egal">=</div>
+      <div class="toi"><b>Marine</b><span>&amp; Aurélien</span></div>
+    </div>
+    <p>Un soldat poitevin, une Oranaise fille d'Espagnols, et une famille tarnaise qui n'avait jamais bougé : il a fallu une guerre, un exil et une ville — Toulouse — pour que ces trois histoires n'en fassent plus qu'une.</p>
+  </div>
+</section>
+
+<!-- ====================== CHAPITRE AMÉRIQUE ====================== -->
+<section class="chapitre" id="amerique" data-branche="amerique">
+  <div class="chapitre-hero" style="background-image:url(images/arkansas-coton.jpg)">
+    <div class="chapitre-titre">
+      <p class="kicker">Chapitre six</p>
+      <h2>De l'autre côté de l'Atlantique</h2>
+      <p>La famille de Hayden · Callicott &amp; Strozyk</p>
+    </div>
+    <p class="credit">Récolte du coton dans l'Arkansas, 1938 — photographie de Russell Lee</p>
+  </div>
+
+  <div class="recit">
+    <div class="bloc reveal">
+      <div class="bloc-texte">
+        <h3>La chaumière froide</h3>
+        <p><b>Callicott</b> vient du vieil anglais : <i>cald</i>, froid, et <i>cot</i>, chaumière. Le nom d'un hameau anglais, emporté de l'autre côté de l'océan à l'époque coloniale.</p>
+        <p>Au XVIIIe siècle, on trouve des Callicott en <b>Virginie</b>, dans les comtés de Prince Edward et de Charlotte. Puis la famille descend en <b>Caroline du Nord</b>, traverse le <b>Tennessee</b> et le nord du <b>Mississippi</b>, et franchit enfin le grand fleuve pour s'installer comme fermiers dans l'<b>Arkansas</b>, dans la seconde moitié du XIXe siècle.</p>
+        <p class="aparte">Pendant que les Barselo traversaient la Méditerranée vers Oran, les Callicott traversaient l'Amérique vers l'ouest. Deux familles de pionniers.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/virginie-pont.jpg" alt="Le High Bridge près de Farmville, Virginie" loading="lazy"><figcaption>Edward Beyer, <i>Le High Bridge près de Farmville</i> (Album of Virginia, 1858) — dans le comté de Prince Edward, où vivaient les Callicott.</figcaption></figure>
+    </div>
+
+    <div class="bloc inverse reveal">
+      <div class="bloc-texte">
+        <h3>Les fermes du comté de Little River</h3>
+        <p>Tout au sud-ouest de l'Arkansas, là où l'État touche le Texas et l'Oklahoma, <b>William Wheeler Callicott</b> (né vers 1869) et <b>Elizabeth Cordelia Cartwright</b> élèvent au moins neuf enfants entre Foreman, Wallace et Jackson Township.</p>
+        <p>Parmi eux : Wallace, mobilisé en 1918 — la même année où Joseph Bolon était en Champagne — ; Beulah Edith, disparue toute jeune ; Edna Isbell, Fredrick McKinley… et <b>Oscar</b>, qui épouse Viola. Oscar et Viola auront trois filles : Marie, Alma et <b>Dorothy</b>.</p>
+      </div>
+      <figure class="bloc-image portrait"><img src="images/foreman-1908.jpg" alt="Plan de Foreman, Arkansas, 1908" loading="lazy"><figcaption>Foreman (Arkansas) en 1908, sur un plan d'assurance incendie Sanborn.</figcaption></figure>
+    </div>
+
+    <div class="bloc reveal">
+      <div class="bloc-texte">
+        <h3>Dottie</h3>
+        <p class="date-cle">16 octobre 1928 · Arden, Arkansas</p>
+        <p><b>Dorothy Bernice Callicott</b> — « Dottie » — grandit à la campagne. À 32 ans, le 6 mai 1961, elle épouse <b>Brunon John Strozyk</b>, d'une famille polonaise de <b>Marche</b>, un village fondé par des immigrants polonais près de North Little Rock. Elle se convertit au catholicisme et devient l'âme de la paroisse <i>Immaculate Heart of Mary</i>, où Brunon est diacre.</p>
+        <p>Ceux qui l'ont connue parlent de son <b>sourire constant</b> et de son <b>regard pétillant</b>. Quatre enfants : John, Paul, Shara et <b>Terri</b> — la mère de Hayden.</p>
+        <p>Dorothy s'est éteinte le 18 janvier 2020, à 91 ans. Elle repose au cimetière de sa paroisse, à Marche.</p>
+      </div>
+      <figure class="bloc-image"><img src="images/marche-eglise.jpg" alt="Église Immaculate Heart of Mary, Marche, Arkansas" loading="lazy"><figcaption>L'église Immaculate Heart of Mary, à Marche (Arkansas) : la paroisse de Dorothy et Brunon.</figcaption></figure>
+    </div>
+
+    <div class="for-hayden reveal" lang="en">
+      <p class="kicker">For Hayden</p>
+      <p>Your grandmother Dorothy “Dottie” Callicott was born on October 16, 1928 in Arden, Arkansas. Her family name comes from Old English <i>cald cot</i>, “the cold cottage”. The Callicotts were colonists in Virginia in the 1700s, then moved through North Carolina, Tennessee and Mississippi before farming in Little River County, Arkansas. Dottie married Deacon Brunon John Strozyk in 1961 and became the heart of Immaculate Heart of Mary parish in Marche. Fun fact: two of Marine's grandparents, Marc and Xavier, were born in the summer of 1929 — just months after Dottie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== COINCIDENCES ====================== -->
+<section class="section coincidences" id="coincidences">
+  <div class="section-head reveal">
+    <p class="kicker">Intermède</p>
+    <h2>Drôles de coïncidences</h2>
+  </div>
+  <div class="cartes-coinc">
+    <div class="coinc reveal"><span class="gros">10 mois</span><p>Dorothy (oct. 1928, Arkansas), Marc (juil. 1929, Poitou) et Xavier (août 1929, Tarn) : trois grands-parents de Marine et Hayden nés à dix mois d'écart, sur deux continents.</p></div>
+    <div class="coinc reveal"><span class="gros">1918</span><p>Joseph Bolon en Champagne, Dominique Valverde appelé à Oran, Wallace Callicott mobilisé en Arkansas : la même année, trois hommes des deux arbres portaient l'uniforme.</p></div>
+    <div class="coinc reveal"><span class="gros">2 mois</span><p>Xavier s'est éteint en novembre 2019, Dorothy en janvier 2020. Ils ne se sont jamais connus.</p></div>
+    <div class="coinc reveal"><span class="gros">5 / 5</span><p>Trinitaria, née un 5 août, s'appelle « Neiges ». Sa fille, née un 5 février, s'appelle « Agathe ». Même coutume, même chiffre.</p></div>
+  </div>
+</section>
+
+<!-- ====================== NOMS ====================== -->
+<section class="section noms-section" id="noms">
+  <div class="section-head reveal">
+    <p class="kicker">Chapitre sept</p>
+    <h2>Ce que disent les noms</h2>
+    <p class="chapo">Chaque nom, chaque prénom est un petit fossile. Retourne les cartes.</p>
+  </div>
+  <div class="noms-grille" id="noms-grille"></div>
+</section>
+
+<!-- ====================== FRISE ====================== -->
+<section class="section frise-section" id="frise">
+  <div class="section-head reveal">
+    <p class="kicker">Chapitre huit</p>
+    <h2>Cinq siècles en une frise</h2>
+    <p class="chapo">De 1509 à aujourd'hui, la grande Histoire et la tienne.</p>
+  </div>
+  <div class="frise-filtres" id="frise-filtres"></div>
+  <ol class="frise" id="frise-liste"></ol>
+</section>
+
+<!-- ====================== ENQUÊTE ====================== -->
+<section class="section enquete" id="enquete">
+  <div class="section-head reveal">
+    <p class="kicker">Épilogue</p>
+    <h2>L'enquête continue</h2>
+    <p class="chapo">Ce livre a été écrit à partir de recherches dans les bases généalogiques et l'état civil. Les dates du XXe siècle sont solides ; plus on remonte, plus certains liens sont des <b>pistes</b>, fondées sur des noms, des lieux et des dates qui concordent — à confirmer dans les archives. Voici comment aller plus loin.</p>
+  </div>
+  <div class="pistes">
+    <div class="piste reveal" data-branche="espagne">
+      <h3>Les parents de Trinitaria et de Dominique</h3>
+      <p>Les actes de naissance d'Oran (1894) et d'Oued Imbert (1898) sont numérisés et gratuits.</p>
+      <a href="http://anom.archivesnationales.culture.gouv.fr/caomec2/" target="_blank" rel="noopener">Archives nationales d'outre-mer (ANOM) →</a>
+    </div>
+    <div class="piste reveal" data-branche="poitou">
+      <h3>Les parents de Marc Rémi</h3>
+      <p>Demander une copie intégrale de son acte de naissance (Saint-Martin-de-Bernegoue, 1929) ou de décès (Toulouse, 2001). C'est gratuit, sur service-public.fr. Son dossier militaire est à Pau (CAPM).</p>
+      <a href="https://archives-deux-sevres-vienne.fr" target="_blank" rel="noopener">Archives des Deux-Sèvres →</a>
+    </div>
+    <div class="piste reveal" data-branche="tarn">
+      <h3>Les parents de Xavier et d'Élise</h3>
+      <p>Les actes de naissance de Labruguière (1929) et de Dourgne (1939), et la fiche matricule de Joseph Bolon (classe 1915) aux Archives du Tarn.</p>
+      <a href="https://archives.tarn.fr" target="_blank" rel="noopener">Archives du Tarn →</a>
+    </div>
+    <div class="piste reveal" data-branche="amerique">
+      <h3>Les Callicott, Strozyk et Kelly</h3>
+      <p>Les recensements américains de 1930, 1940 et 1950 sont en ligne et gratuits : on y trouvera Oscar, Viola et la petite Dorothy.</p>
+      <a href="https://www.familysearch.org" target="_blank" rel="noopener">FamilySearch →</a>
+    </div>
+  </div>
+  <div class="souvenirs reveal">
+    <h3>Et maintenant, à toi de jouer</h3>
+    <p>Les plus beaux documents ne sont pas aux archives : ce sont les photos dans les boîtes à chaussures, les livrets de famille, les souvenirs de la famille. Ce livre a été fait pour s'enrichir — chaque photo retrouvée pourra prendre sa place dans l'arbre.</p>
+  </div>
+</section>
+
+<!-- ====================== PIED ====================== -->
+<footer class="pied">
+  <p class="manuscrit">Pour Marine &amp; Hayden</p>
+  <p class="pied-date">Recherches et mise en page : Aurélien · novembre 2026</p>
+  <details class="credits">
+    <summary>Crédits des images</summary>
+    <ul id="credits-liste"></ul>
+    <p>Images issues de Wikimedia Commons, dans le domaine public ou sous licences libres (CC). Fonds de carte © OpenStreetMap, © CARTO.</p>
+  </details>
+</footer>
+
+<!-- ====================== FICHE PERSONNE ====================== -->
+<div class="fiche-fond" id="fiche-fond" hidden>
+  <article class="fiche" id="fiche" role="dialog" aria-modal="true" aria-labelledby="fiche-nom">
+    <button class="fiche-fermer" id="fiche-fermer" aria-label="Fermer">×</button>
+    <div class="fiche-img" id="fiche-img"></div>
+    <div class="fiche-corps">
+      <p class="fiche-role" id="fiche-role"></p>
+      <h3 id="fiche-nom"></h3>
+      <p class="fiche-dates" id="fiche-dates"></p>
+      <p class="fiche-cert" id="fiche-cert"></p>
+      <div class="fiche-bio" id="fiche-bio"></div>
+    </div>
+  </article>
+</div>
+
+<script src="vendor/leaflet.js"></script>
+<script src="vendor/carte-monde.js"></script>
+<script src="data.js"></script>
+<script src="credits.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
